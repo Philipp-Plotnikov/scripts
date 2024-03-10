@@ -72,13 +72,13 @@ export function decode(data: string): string {
 
 function validateEscapeAmount(amount: number, character: string, index: number) {
     if (amount < 0 || amount > ESCAPE_CHUNK_SIZE) {
-        throw new Error(`Amount "${amount} " not valid for character "${character}" at index "${index}"`)
+        throw new Error(`Amount "${amount} " not valid for character "${character}" at index "${index}"`);
     }
 }
 
 function validateCharacterAmount(amount: number, character: string, index: number) {
     if (amount < 0 || amount > CHAR_CHUNK_SIZE) {
-        throw new Error(`Amount "${amount} " not valid for character "${character}" at index "${index}"`)
+        throw new Error(`Amount "${amount} " not valid for character "${character}" at index "${index}"`);
     }
 }
 

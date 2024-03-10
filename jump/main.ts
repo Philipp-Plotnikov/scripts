@@ -26,9 +26,7 @@ try {
     console.error(error);
 }
 
-
-
-// const data = "#".repeat(280);
+// const data = "abcddddcd";
 // console.log("Original data: ", data);
 // console.log("Original data length: ", data.length);
 // console.log("-----------");
