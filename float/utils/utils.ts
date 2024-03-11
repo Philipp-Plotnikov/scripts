@@ -48,7 +48,7 @@ export function convertToFloat(data: number, mantSize: number, expSize: number):
     intMant.reverse();
     fracMant.reverse();
     intExp.reverse();
-    const result: BinaryView = [isMinus, ...intMant, ...fracMant, ...intExp];
+    const result: BinaryView = [isMinus, ...intExp, ...intMant, ...fracMant];
     return result;
 }
 
