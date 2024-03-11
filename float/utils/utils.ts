@@ -41,7 +41,7 @@ export function convertToFloat(data: number, mantSize: number, expSize: number):
     const isMinus = data < 0 ? 1 : 0;
     const [intMant, fracMant] = convertToBinary(data, mantSize);
     let decimalExp = intMant.lastIndexOf(1);
-    if (decimalExp === 0) {
+    if (decimalExp === -1) {
         decimalExp = -(fracMant.indexOf(1) + 1);
     }
     const intExp = convertToInt(decimalExp, expSize);
