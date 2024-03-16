@@ -1,15 +1,23 @@
-import { EXPONENT_BIT_SIZE, INT_BIT_SIZE, MANTISSA_BIT_SIZE, UINT_BIT_SIZE } from "./defaults/defaults";
-import { convertToBinary, convertToFloat, convertToInt, convertToUInt } from "./utils/utils";
+import { INT_BIT_SIZE, UINT_BIT_SIZE } from "./defaults/defaults";
+import { convertToBinary, convertToFloat, convertToInt, convertToUInt, decodeFloat } from "./utils/utils";
 
 const data = 2.5;
 try {
     console.log("Original number: ", data);
+    console.log("------------");
+    // const uint = convertToUInt(data, UINT_BIT_SIZE);
+    // console.log("UInt view: ", uint);
+    // console.log("Length: ", uint.length);
     // console.log("------------");
-    // console.log("UInt view: ", convertToUInt(data, UINT_BIT_SIZE));
+    // const int = convertToInt(data, INT_BIT_SIZE);
+    // console.log("Int view: ", int);
+    // console.log("Length: ", int.length);
     // console.log("------------");
-    // console.log("Int view: ", convertToInt(data, INT_BIT_SIZE));
-    // console.log("------------");
-    console.log("Float view: ", convertToFloat(data, MANTISSA_BIT_SIZE, EXPONENT_BIT_SIZE));
+    const binaryFloat = convertToFloat(data);
+    console.log("Binary float view: ", binaryFloat);
+    const float = decodeFloat(binaryFloat);
+    console.log("------------");
+    console.log("Float view: ", float);
 } catch (error) {
     console.error(error);
 }
