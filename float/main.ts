@@ -1,7 +1,6 @@
-import { INT_BIT_SIZE, UINT_BIT_SIZE } from "./defaults/defaults";
-import { convertToBinary, convertToFloat, convertToInt, convertToUInt, decodeFloat } from "./utils/utils";
+import { convertToFloat, decodeFloat } from "./utils/utils";
 
-const data = 2.5;
+const data = 0.6666666;
 try {
     console.log("Original number: ", data);
     console.log("------------");

@@ -59,6 +59,8 @@ export function convertToFloat(data: number | string): string {
     let decimalExp = intMant.lastIndexOf(1);
     if (decimalExp === -1) {
         decimalExp = -(fracMant.indexOf(1) + 1);
+        fracMant.splice(0, Math.abs(decimalExp + 1));
+        fracMant.push(...new Array(Math.abs(decimalExp + 1)).fill(0));
     }
     const intExp = convertToUInt(decimalExp + EXPONENT_OFFSET, EXPONENT_BIT_SIZE);
     const mantissa = [...intMant.reverse(), ...fracMant];
