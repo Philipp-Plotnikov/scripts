@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    color: black;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-size: 16px;
+}
+
+.main {
+    position: relative;
+    display: block;
+    top: 50vh;
+    transform: translateY(-50%);
+}
+
+.epocha-time-container {
+    margin-left: 50%;
+    display: inline-block;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+}
+
+.game-board {
+    display: flex;
+    margin: auto;
+    margin-top: 2rem;
+    position: relative;
+    width: 60vh;
+    border: 1px solid black;
+    height: 60vh;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.game-cell {
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: calc(100%/6);
+    cursor: pointer;
+}
+
+.game-cell:hover {
+    background-color:coral
+}
+
+.control-panel {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+}
+
+.game-start {
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 0.7rem 2.3rem;
+    outline: 0;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.game-end {
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 0.7rem 2.3rem;
+    outline: 0;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.game-start:hover, .game-end:hover {
+    color: white;
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 4px 2px gray;
+}
+
+
+@media screen and (orientation: portrait) {
+    .game-board {
+        width: 60vw;
+        height: 60vw;
+    }
+}
