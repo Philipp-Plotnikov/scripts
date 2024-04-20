@@ -32,12 +32,12 @@ gameStart.addEventListener('click', async (event) => {
     button.dataset.isActive = 'true';
     gameEnd.dataset.isActive = 'false';
     if (!isTimerInProgress()) {
-        await animate();
+        animate();
         return;
     }
     await startTimer();
     if (isButtonActive(gameStart)) {
-        await animate();
+        setTimeout(() => {animate()});
     }
 });
 gameEnd.addEventListener('click', (event) => {
