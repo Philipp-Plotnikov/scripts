@@ -4,7 +4,7 @@ const GAME_BOARD_CLASS = '.game-board';
 const GAME_START_BUTTON_CLASS = '.game-start';
 const GAME_END_BUTTON_CLASS = '.game-end';
 const EPOCHA_TIME_CLASS = '.epocha-time';
-const ANIMATION_INTERVAL_MS = 1000;
+const ANIMATION_INTERVAL_MS = 25;
 const MATRIX_ROW_AMOUNT = 20;
 const MATRIX_COLUMN_AMOUNT = 20;
 
