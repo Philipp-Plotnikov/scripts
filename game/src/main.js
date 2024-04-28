@@ -4,10 +4,9 @@ const GAME_BOARD_CLASS = '.game-board';
 const GAME_START_BUTTON_CLASS = '.game-start';
 const GAME_END_BUTTON_CLASS = '.game-end';
 const EPOCHA_TIME_CLASS = '.epocha-time';
-const ANIMATION_INTERVAL_SEC = 5;
-const SECOND_MS = 1000;
-const MATRIX_ROW_AMOUNT = 6;
-const MATRIX_COLUMN_AMOUNT = 6;
+const ANIMATION_INTERVAL_MS = 1000;
+const MATRIX_ROW_AMOUNT = 20;
+const MATRIX_COLUMN_AMOUNT = 20;
 
 const gameStart = document.querySelector(GAME_START_BUTTON_CLASS);
 const gameEnd = document.querySelector(GAME_END_BUTTON_CLASS);
@@ -24,21 +23,14 @@ gameBoard.addEventListener('click', (event) => {
     markCellAlive(gameBoardCell);
 });
 
-gameStart.addEventListener('click', async (event) => {
+gameStart.addEventListener('click', (event) => {
     const button = event.currentTarget;
     if (isButtonActive(button)) {
         return;
     }
     button.dataset.isActive = 'true';
     gameEnd.dataset.isActive = 'false';
-    if (!isTimerInProgress()) {
-        animate();
-        return;
-    }
-    await startTimer();
-    if (isButtonActive(gameStart)) {
-        setTimeout(() => {animate()});
-    }
+    animate();
 });
 gameEnd.addEventListener('click', (event) => {
     const button = event.currentTarget;
@@ -49,7 +41,7 @@ gameEnd.addEventListener('click', (event) => {
     gameStart.dataset.isActive = 'false';
 });
 
-async function animate() {
+function animate() {
     const deltaRow = [-1, -1, -1, 0, 0, 1, 1, 1];
     const deltaColumn = [-1, 0, 1, -1, 1, -1, 0, 1];
     let isChanged = false;
@@ -83,38 +75,11 @@ async function animate() {
         gameStart.dataset.isActive = 'false';
         return;
     }
-    await startTimer();
-    if (isButtonActive(gameStart)) {
-        setTimeout(() => {animate()});
-    }
-}
-
-async function startTimer() {
-    const promise = new Promise((resolve) => {
-        let currentInterval = +(epochaTime.dataset.time) || 0;
-        const interval = setInterval(() => {
-            if (isButtonActive(gameEnd)) {
-                clearInterval(interval);
-                resolve();
-                return;
-            }
-            if (currentInterval < ANIMATION_INTERVAL_SEC) {
-                currentInterval++;
-                epochaTime.dataset.time = currentInterval.toString();
-                requestAnimationFrame(() => {
-                    epochaTime.textContent = `${(currentInterval / 60).toFixed(0).padStart(2, '0')}:${(currentInterval % 60).toFixed(0).padStart(2, '0')}`;
-                });
-                return;
-            }
-            requestAnimationFrame(() => {
-                epochaTime.textContent = '00:00';
-                epochaTime.dataset.time = '';
-            })
-            clearInterval(interval);
-            resolve();
-        }, SECOND_MS);
-    });
-    return promise;
+    setTimeout(() => {
+        if (isButtonActive(gameStart)) {
+            animate();
+        }
+    }, ANIMATION_INTERVAL_MS);
 }
 
 function getBoardCellMatrix() {
@@ -135,10 +100,6 @@ function isCellAlive(cell) {
 
 function isButtonActive(button) {
     return button.dataset.isActive === 'true';
-}
-
-function isTimerInProgress() {
-    return !!epochaTime.dataset.time && epochaTime.dataset.time !== '0';
 }
 
 function markCellAlive(cell) {
