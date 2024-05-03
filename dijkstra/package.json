@@ -1,0 +1,13 @@
+{
+    "name": "deikstra",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "build": "tsc",
+      "start": "node ./dist/main.js"
+    },
+    "devDependencies": {
+      "@types/node": "^20.11.24"
+    }
+  }
+  
