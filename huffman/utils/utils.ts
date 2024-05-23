@@ -1,5 +1,3 @@
-// This code was generated with GitHub Copilot
-
 class Node {
     constructor(public char: string, public freq: number, public left: Node | null = null, public right: Node | null = null) {}
     isLeaf(): boolean {
